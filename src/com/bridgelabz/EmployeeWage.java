@@ -1,7 +1,7 @@
 package com.bridgelabz;
 
 public class EmployeeWage {
-
+  
     static final int IS_FULL_TIME = 2;
     static final int WAGE_PER_HOUR = 20;
     static final int FULL_DAY_HOUR = 16;
@@ -37,7 +37,8 @@ public class EmployeeWage {
             System.out.println("Daily Wage:" + dailyWage);
             System.out.println("Total Wage of month:" + totalWage);
         }
+
         System.out.println("Total Days:" + (day-1));
-    }
+   }
 
 }
