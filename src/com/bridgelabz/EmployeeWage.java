@@ -1,12 +1,14 @@
 package com.bridgelabz;
 
 public class EmployeeWage {
-  
+
     static final int IS_FULL_TIME = 2;
     static final int WAGE_PER_HOUR = 20;
     static final int FULL_DAY_HOUR = 16;
     static final int IS_PART_TIME = 1;
     static final int PART_TIME_HOUR = 8;
+    static final int MAX_HOURS = 100;
+    static final int MAX_Days = 20;
     static final int NO_OF_WORKING_DAYS = 2;
 
     static int checkAttendance() {
@@ -18,27 +20,31 @@ public class EmployeeWage {
         int attendance;
         int dailyWage = 0;
         int totalWage = 0;
-        int day = 0;
+        int day = 1;
+        int totalWorkingHour = 0;
 
-        for (day = 0; day < NO_OF_WORKING_DAYS; day++) {
-            attendance= checkAttendance();
-            switch (attendance) {
+        while (day <= MAX_Days && totalWorkingHour < MAX_HOURS) {
+            attendance = checkAttendance();
+            switch ( attendance) {
                 case IS_FULL_TIME:
                     dailyWage = WAGE_PER_HOUR * FULL_DAY_HOUR;
-                    break;
-
+                    totalWorkingHour += FULL_DAY_HOUR;
+                    
                 case IS_PART_TIME:
                     dailyWage = WAGE_PER_HOUR * PART_TIME_HOUR;
+                    totalWorkingHour += PART_TIME_HOUR;
                     break;
                 default:
                     break;
             }
             totalWage += dailyWage;
-            System.out.println("Daily Wage:" + dailyWage);
-            System.out.println("Total Wage of month:" + totalWage);
+            System.out.println("Daily Wage:" + day + " = " + dailyWage);
+            day++;
         }
-
+        System.out.println();
         System.out.println("Total Days:" + (day-1));
-   }
+        System.out.println("Total Working Hour:" + totalWorkingHour);
+        System.out.println("Total Wage of month:" + totalWage);
+    }
 
 }
